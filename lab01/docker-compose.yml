@@ -1,0 +1,12 @@
+services:
+  shortener:
+    build: .
+    ports:
+      - "8080:8080"
+    # Значения берутся из окружения, если заданы, иначе используются умолчания.
+    # Так конфигурацию можно менять, не правя файл.
+    environment:
+      HTTP_ADDR: "${HTTP_ADDR:-:8080}"
+      BASE_URL: "${BASE_URL:-http://localhost:8080}"
+      CODE_LENGTH: "${CODE_LENGTH:-7}"
+      LOG_LEVEL: "${LOG_LEVEL:-info}"
